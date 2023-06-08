@@ -6,22 +6,24 @@ const express = require("express");
 
 const app = express();
 
+
+const adminRoutes=require('./routes/admin')
+
+const shopRoutes=require('./routes/shop')
+
+const landingRoute=require('./routes/landing')
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/add-product", (req, res, next) => {
-  res.send(
-    '<form action="/product" method="POST"><input type="text" name="Title"></input><input type="text" name="size"><button>Submit</button></form>'
-  );
-});
+app.use('/admin',adminRoutes)
 
-app.use("/product",(req, res, next) => {
-  console.log(req.body);
-  res.redirect("/");
-});
+app.use('/shop',shopRoutes)
 
-app.use("/",(req, res, next) => {
-  res.send("<h1>Hello</h1>");
-});
+app.use(landingRoute)
+
+app.use((req,res,next)=>{
+    res.status(404).send('<h1>Page Not Found</h1>')
+})
 
 const server = http.createServer(app);
 
