@@ -13,6 +13,8 @@ const adminRoutes=require('./routes/admin')
 
 const shopRoutes=require('./routes/shop')
 
+const productRoutes=require('./routes/productDetails')
+
 const contactRoutes=require('./routes/contact')
 
 const errorController=require('./controllers/404')
@@ -25,6 +27,7 @@ app.use('/',shopRoutes)
 
 app.use(contactRoutes)
 
+app.use(productRoutes)
 
 app.use(errorController.get404)
 

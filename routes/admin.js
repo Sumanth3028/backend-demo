@@ -8,7 +8,7 @@ const router=express.Router()
 
 router.get("/add-product", productController.getAddProductPage);
   
-  router.post("/product",productController.postProductPage);
+router.post("/product",productController.postProductPage);
 
 
 module.exports=router
